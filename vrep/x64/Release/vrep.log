@@ -1,0 +1,2 @@
+﻿  extApi.c
+C:\Users\natha\OneDrive\Desktop\vrep\vrep\vrep\extApi.h(9,14): fatal  error C1083: Não é possível abrir arquivo incluir: 'simConst.h': No such file or directory

@@ -1,4 +1,4 @@
-#define PI 3.14
+constexpr auto PI = 3.14;
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>

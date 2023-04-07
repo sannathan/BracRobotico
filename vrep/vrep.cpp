@@ -1,4 +1,4 @@
-constexpr auto PI = 3.14;
+#define PI 3.14
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -11,51 +11,94 @@ int main(int argc, char* argv[])
 {
 
     //variavei para handler das juntas
-    int handler1 = 0;
-    int handler2 = 0;
-    int handler3 = 0;
-    int handler4 = 0;
-    int handler5 = 0;
-    int handler6 = 0;
+    int handler = 0;
+    int junta_1 = 0;
+    int junta_2 = 0;
+    int junta_3 = 0;
+    int junta_4 = 0;
+    int junta_5 = 0;
+    int junta_6 = 0;
 
     //conecta com o coppelia
-    int clientID1 = simxStart((simxChar*) "127.0.0.1", 19999, true, true, 2000, 5);
+    int clientID = simxStart((simxChar*)"127.0.0.1", 19999, true, true, 2000, 5);
 
     extApi_sleepMs(500);
 
     //verifica conexao com simulador
-    if (clientID1 == -1) { //verificar dps se funciona corretamente
+    if (clientID == -1) {
         printf("Erro conectando ao Coppelia!\n");
         return 0;
-    } else {
+    }
+    else {
         printf("Conectado ao Coppelia!\n");
     }
 
-    //configura o handler da primeira junta
-    simxChar handlerName1[150] = "/NyrioOne/joint_1";
-    simxChar handlerName2[150] = "/NyrioOne/joint_2";
-    simxChar handlerName3[150] = "/NyrioOne/joint_3";
-    simxChar handlerName4[150] = "/NyrioOne/joint_4";
-    simxChar handlerName5[150] = "/NyrioOne/joint_5";
-    simxChar handlerName6[150] = "/NyrioOne/joint_6";
+    //configura o handler de todas as juntas do NiryoOne
+    simxChar junta1[150] = "/NiryoOne/Joint";
+    simxGetObjectHandle(clientID, junta1, &junta_1, (simxInt)simx_opmode_oneshot_wait);
+    simxChar junta2[150] = "/NiryoOne/Joint/Link/Joint";
+    simxGetObjectHandle(clientID, junta2, &junta_2, (simxInt)simx_opmode_oneshot_wait);
+    simxChar junta3[150] = "/NiryoOne/Joint/Link/Joint/Link/Joint";
+    simxGetObjectHandle(clientID, junta3, &junta_3, (simxInt)simx_opmode_oneshot_wait);
+    simxChar junta4[150] = "/NiryoOne/Joint/Link/Joint/Link/Joint/Link/Joint";
+    simxGetObjectHandle(clientID, junta4, &junta_4, (simxInt)simx_opmode_oneshot_wait);
+    simxChar junta5[150] = "/NiryoOne/Joint/Link/Joint/Link/Joint/Link/Joint/Link/Joint";
+    simxGetObjectHandle(clientID, junta5, &junta_5, (simxInt)simx_opmode_oneshot_wait);
+    simxChar junta6[150] = "/NiryoOne/Joint/Link/Joint/Link/Joint/Link/Joint/Link/Joint/Link/Joint";
+    simxGetObjectHandle(clientID, junta6, &junta_6, (simxInt)simx_opmode_oneshot_wait);
 
-    simxGetObjectHandle(clientID1, handlerName1, &handler1, (simxInt)simx_opmode_oneshot_wait);
-    simxGetObjectHandle(clientID1, handlerName2, &handler2, (simxInt)simx_opmode_oneshot_wait);
-    simxGetObjectHandle(clientID1, handlerName3, &handler3, (simxInt)simx_opmode_oneshot_wait);
-    simxGetObjectHandle(clientID1, handlerName4, &handler4, (simxInt)simx_opmode_oneshot_wait);
-    simxGetObjectHandle(clientID1, handlerName5, &handler5, (simxInt)simx_opmode_oneshot_wait);
-    simxGetObjectHandle(clientID1, handlerName6, &handler6, (simxInt)simx_opmode_oneshot_wait);
+   // for (int i = 1; i <= 6; i++) {
+
+        printf("Chelly to testando a junta 1\n");
+        //move a junta um ate seu ponto maximo
+        simxSetJointTargetPosition(clientID, junta_1, (simxFloat)0, (simxInt)simx_opmode_oneshot_wait);
+        extApi_sleepMs(3000);
+        simxSetJointTargetPosition(clientID, junta_1, (simxFloat)-(PI/14), (simxInt)simx_opmode_oneshot_wait);
+        extApi_sleepMs(3000);
+       // simxSetJointTargetPosition(clientID, junta_1, (simxFloat)0, (simxInt)simx_opmode_oneshot_wait);
+       // extApi_sleepMs(3000);
+
+       // printf("Chelly to testando a junta 2\n");
+        // move a junta dois ate ...
+        //simxSetJointTargetPosition(clientID, junta_2, (simxFloat)0, (simxInt)simx_opmode_oneshot_wait);
+        //extApi_sleepMs(3000);
+       // simxSetJointTargetPosition(clientID, junta_2, (simxFloat)-PI/16, (simxInt)simx_opmode_oneshot_wait);
+        //extApi_sleepMs(3000);
+       // simxSetJointTargetPosition(clientID, junta_2, (simxFloat)0, (simxInt)simx_opmode_oneshot_wait);
+        //extApi_sleepMs(3000);
+
+        printf("Chelly to testando a junta 3\n");
+        // move a junta dois ate ...
+        simxSetJointTargetPosition(clientID, junta_3, (simxFloat)0, (simxInt)simx_opmode_oneshot_wait);
+        extApi_sleepMs(3000);
+        simxSetJointTargetPosition(clientID, junta_3, (simxFloat)-PI/18, (simxInt)simx_opmode_oneshot_wait);
+        extApi_sleepMs(3000);
+      //  simxSetJointTargetPosition(clientID, junta_3, (simxFloat)0, (simxInt)simx_opmode_oneshot_wait);
+      //  extApi_sleepMs(3000);
+
+        printf("Chelly to testando a junta 5\n");
+        // move a junta dois ate ...
+        simxSetJointTargetPosition(clientID, junta_5, (simxFloat)0, (simxInt)simx_opmode_oneshot_wait);
+        extApi_sleepMs(3000);
+        simxSetJointTargetPosition(clientID, junta_5, (simxFloat)-PI/36, (simxInt)simx_opmode_oneshot_wait);
+        extApi_sleepMs(3000);
+
+        printf("Chelly to testando a junta 2\n");
+        //move a junta um ate seu ponto maximo
+        simxSetJointTargetPosition(clientID, junta_2, (simxFloat)-PI/3.8, (simxInt)simx_opmode_oneshot_wait);
+        extApi_sleepMs(4000);
+        simxSetJointTargetPosition(clientID, junta_2, (simxFloat)0, (simxInt)simx_opmode_oneshot_wait);
 
 
-            //move a junta ate seu ponto maximo
-            simxSetJointTargetPosition(clientID1, handler1,-0.3, (simxInt)simx_opmode_oneshot_wait);
-            extApi_sleepMs(2000);
-            simxSetJointTargetPosition(clientID1, handler2, 2*PI, (simxInt)simx_opmode_oneshot_wait);
-            extApi_sleepMs(2000);
-            simxSetJointTargetPosition(clientID1, handler3, 0.3, (simxInt)simx_opmode_oneshot_wait);
+        //passa para a proxima junta
+      //  strcat(handlerName, "/Link/Joint");
+      //  simxGetObjectHandle(clientID, (simxChar*)handlerName, &handler, (simxInt)simx_opmode_oneshot_wait);
+
+  //  }
 
     // Fecha a conexao 
-    simxFinish(clientID1);
+    simxFinish(clientID);
+    printf("parei a conexão chelly");
 
     return(0);
 }

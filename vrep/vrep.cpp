@@ -49,53 +49,31 @@ int main(int argc, char* argv[])
 
    // for (int i = 1; i <= 6; i++) {
 
+    // move o braco ate a tecla 0
         printf("Chelly to testando a junta 1\n");
-        //move a junta um ate seu ponto maximo
         simxSetJointTargetPosition(clientID, junta_1, (simxFloat)0, (simxInt)simx_opmode_oneshot_wait);
         extApi_sleepMs(3000);
-        simxSetJointTargetPosition(clientID, junta_1, (simxFloat)-(PI/14), (simxInt)simx_opmode_oneshot_wait);
+        simxSetJointTargetPosition(clientID, junta_1, (simxFloat)-(PI/10), (simxInt)simx_opmode_oneshot_wait);
         extApi_sleepMs(3000);
-       // simxSetJointTargetPosition(clientID, junta_1, (simxFloat)0, (simxInt)simx_opmode_oneshot_wait);
-       // extApi_sleepMs(3000);
-
-       // printf("Chelly to testando a junta 2\n");
-        // move a junta dois ate ...
-        //simxSetJointTargetPosition(clientID, junta_2, (simxFloat)0, (simxInt)simx_opmode_oneshot_wait);
-        //extApi_sleepMs(3000);
-       // simxSetJointTargetPosition(clientID, junta_2, (simxFloat)-PI/16, (simxInt)simx_opmode_oneshot_wait);
-        //extApi_sleepMs(3000);
-       // simxSetJointTargetPosition(clientID, junta_2, (simxFloat)0, (simxInt)simx_opmode_oneshot_wait);
-        //extApi_sleepMs(3000);
 
         printf("Chelly to testando a junta 3\n");
-        // move a junta dois ate ...
         simxSetJointTargetPosition(clientID, junta_3, (simxFloat)0, (simxInt)simx_opmode_oneshot_wait);
         extApi_sleepMs(3000);
         simxSetJointTargetPosition(clientID, junta_3, (simxFloat)-PI/18, (simxInt)simx_opmode_oneshot_wait);
-        extApi_sleepMs(3000);
-      //  simxSetJointTargetPosition(clientID, junta_3, (simxFloat)0, (simxInt)simx_opmode_oneshot_wait);
-      //  extApi_sleepMs(3000);
 
         printf("Chelly to testando a junta 5\n");
-        // move a junta dois ate ...
         simxSetJointTargetPosition(clientID, junta_5, (simxFloat)0, (simxInt)simx_opmode_oneshot_wait);
         extApi_sleepMs(3000);
         simxSetJointTargetPosition(clientID, junta_5, (simxFloat)-PI/36, (simxInt)simx_opmode_oneshot_wait);
         extApi_sleepMs(3000);
 
         printf("Chelly to testando a junta 2\n");
-        //move a junta um ate seu ponto maximo
-        simxSetJointTargetPosition(clientID, junta_2, (simxFloat)-PI/3.8, (simxInt)simx_opmode_oneshot_wait);
+        simxSetJointTargetPosition(clientID, junta_2, (simxFloat)-PI/3, (simxInt)simx_opmode_oneshot_wait);
         extApi_sleepMs(4000);
         simxSetJointTargetPosition(clientID, junta_2, (simxFloat)0, (simxInt)simx_opmode_oneshot_wait);
-
-
-        //passa para a proxima junta
-      //  strcat(handlerName, "/Link/Joint");
-      //  simxGetObjectHandle(clientID, (simxChar*)handlerName, &handler, (simxInt)simx_opmode_oneshot_wait);
-
-  //  }
-
+        
+        // devolve todas as juntas a posicao inicial
+     
     // Fecha a conexao 
     simxFinish(clientID);
     printf("parei a conexão chelly");
